@@ -7,6 +7,11 @@ import Resume from "./pages/Resume";
 import Dashboard from "./Dashboard";
 
 function App() {
+  React.useEffect(() => {
+    document.getElementById("message").remove();
+    document.getElementById("load").remove();
+  }, []);
+
   return (
     <Router>
       <Routes>

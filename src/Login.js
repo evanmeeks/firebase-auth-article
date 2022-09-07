@@ -31,7 +31,7 @@ function Login() {
       return;
     }
     if (user) navigate("/dashboard");
-  }, [user, loading]);
+  }, [user, loading, navigate]);
 
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>

@@ -66,7 +66,6 @@ export default function SidebarWithHeader({ children }) {
       setName(data.name);
     } catch (err) {
       console.error(err);
-      alert("An error occured while fetching user data");
     }
   };
 
@@ -107,6 +106,7 @@ export default function SidebarWithHeader({ children }) {
 }
 
 const SidebarContent = ({ onClose, ...rest }) => {
+  const { user } = rest;
   return (
     <Box
       transition="3s ease"
@@ -123,6 +123,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
           <Image src={Logo} />
         </Flex>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
+        <pre>{JSON.stringify(user, null, 4)}</pre>
       </Flex>
       {LinkItems.map((link) => (
         <NavItem
