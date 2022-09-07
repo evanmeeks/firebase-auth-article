@@ -39,33 +39,36 @@ function Login() {
       <Flex p={8} flex={1} align={"center"} justify={"center"}>
         <Stack spacing={4} w={"full"} maxW={"md"}>
           <Flex
-            border="2px solid blue"
+            border="1px solid #ccc"
             borderRadius="xl"
-            p={4}
+            boxShadow="18px"
             justifyContent="flex-end"
             alignItems="center"
             top="25vh"
+            mb="20vh"
             left="38%"
             flexWrap="wrap"
+            p="20px"
             flexDirection="column"
           >
-            <Link to="/resume" color="blue.500">
-              <Text fontSize="3xl">🧾Evan Meeks Resume</Text>
-            </Link>
-            <Flex fontSize="2xl" color="blue.300">
-              <Box
+            <RouteLink to="resume" color="blue.500">
+              <Box fontSize={["1.75rem"]} color="blue.500">
+                Evan Meeks Resume
+              </Box>
+            </RouteLink>
+            <Flex fontSize="2xl">
+              <a
                 as="a"
-                href="mail:evan.meeks@gmail.com"
+                href="mailto:evan.meeks@gmail.com"
                 fontSize="xl"
-                color="blue.500"
+                color="green.500"
               >
                 evan.meeks@gmail.com
-              </Box>
+              </a>
             </Flex>
             <Box fontSize="xl" color="blue.500">
-              Phone: 512-518-8920
+              512-518-8920
             </Box>
-            <RouteLink exact to="/resume"></RouteLink>
           </Flex>
           <Heading fontSize={"2xl"}>Sign in to your account</Heading>
           <FormControl id="email">
