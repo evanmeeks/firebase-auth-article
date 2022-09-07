@@ -7,6 +7,7 @@ import { GoogleIcon } from "./icons/GoogleIcon";
 import {
   Button,
   Center,
+  Box,
   Flex,
   FormControl,
   VStack,
@@ -37,13 +38,35 @@ function Login() {
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Flex p={8} flex={1} align={"center"} justify={"center"}>
         <Stack spacing={4} w={"full"} maxW={"md"}>
-          <Center>
-            <RouteLink to="/resume">
-              <Link color="blue.500">
-                <Text fontSize="3xl">Evan Meeks - Resume</Text>
-              </Link>
-            </RouteLink>
-          </Center>
+          <Flex
+            border="2px solid blue"
+            borderRadius="xl"
+            p={4}
+            justifyContent="flex-end"
+            alignItems="center"
+            top="25vh"
+            left="38%"
+            flexWrap="wrap"
+            flexDirection="column"
+          >
+            <Link to="/resume" color="blue.500">
+              <Text fontSize="3xl">🧾Evan Meeks Resume</Text>
+            </Link>
+            <Flex fontSize="2xl" color="blue.300">
+              <Box
+                as="a"
+                href="mail:evan.meeks@gmail.com"
+                fontSize="xl"
+                color="blue.500"
+              >
+                evan.meeks@gmail.com
+              </Box>
+            </Flex>
+            <Box fontSize="xl" color="blue.500">
+              Phone: 512-518-8920
+            </Box>
+            <RouteLink exact to="/resume"></RouteLink>
+          </Flex>
           <Heading fontSize={"2xl"}>Sign in to your account</Heading>
           <FormControl id="email">
             <FormLabel>Email address</FormLabel>
