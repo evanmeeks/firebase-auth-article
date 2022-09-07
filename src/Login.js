@@ -6,7 +6,7 @@ import { GoogleIcon } from "./icons/GoogleIcon";
 
 import {
   Button,
-  Checkbox,
+  Center,
   Flex,
   FormControl,
   VStack,
@@ -37,6 +37,13 @@ function Login() {
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Flex p={8} flex={1} align={"center"} justify={"center"}>
         <Stack spacing={4} w={"full"} maxW={"md"}>
+          <Center>
+            <RouteLink to="/resume">
+              <Link color="blue.500">
+                <Text fontSize="3xl">Evan Meeks - Resume</Text>
+              </Link>
+            </RouteLink>
+          </Center>
           <Heading fontSize={"2xl"}>Sign in to your account</Heading>
           <FormControl id="email">
             <FormLabel>Email address</FormLabel>
