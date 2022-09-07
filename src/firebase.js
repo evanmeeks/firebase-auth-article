@@ -17,15 +17,21 @@ import {
   addDoc,
 } from "firebase/firestore";
 
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDIXJ5YT7hoNbBFqK3TBcV41-TzIO-7n7w",
-  authDomain: "fir-auth-6edd8.firebaseapp.com",
-  projectId: "fir-auth-6edd8",
-  storageBucket: "fir-auth-6edd8.appspot.com",
-  messagingSenderId: "904760319835",
-  appId: "1:904760319835:web:44fd0d957f114b4e51447e",
-  measurementId: "G-Q4TYKH9GG7",
+  apiKey: "AIzaSyDK73LVTB7HZX4sjOl6nIlG_oMMGFAV8MI",
+  authDomain: "career-snap.firebaseapp.com",
+  databaseURL: "https://career-snap-default-rtdb.firebaseio.com",
+  projectId: "career-snap",
+  storageBucket: "career-snap.appspot.com",
+  messagingSenderId: "141088498250",
+  appId: "1:141088498250:web:967e6f6a5713d39be7bcb3",
 };
+
+// Initialize Firebase
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
