@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
-import "./Dashboard.css";
-import { auth, db, logout } from "./firebase";
+import { auth, db, logout, app } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import { useNavigate, Link } from "react-router-dom";
+import "./Dashboard.css";
+import SidebarWithHeader from "./pages/DasboardContainer";
 
 function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
@@ -30,18 +31,7 @@ function Dashboard() {
     fetchUserName();
   }, [user, loading]);
 
-  return (
-    <div className="dashboard">
-      <div className="dashboard__container">
-        Logged in as
-        <div>{name}</div>
-        <div>{user?.email}</div>
-        <button className="dashboard__btn" onClick={logout}>
-          Logout
-        </button>
-      </div>
-    </div>
-  );
+  return <SidebarWithHeader />;
 }
 
 export default Dashboard;

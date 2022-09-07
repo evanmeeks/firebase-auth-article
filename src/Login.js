@@ -1,8 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link as RouteLink, useNavigate } from "react-router-dom";
 import { auth, logInWithEmailAndPassword, signInWithGoogle } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import "./Login.css";
+import { GoogleIcon } from "./icons/GoogleIcon";
+
+import {
+  Button,
+  Checkbox,
+  Flex,
+  FormControl,
+  VStack,
+  FormLabel,
+  Text,
+  Heading,
+  Input,
+  Link,
+  Stack,
+  Image,
+} from "@chakra-ui/react";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -19,39 +34,74 @@ function Login() {
   }, [user, loading]);
 
   return (
-    <div className="login">
-      <div className="login__container">
-        <input
-          type="text"
-          className="login__textBox"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
-        />
-        <input
-          type="password"
-          className="login__textBox"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        <button
-          className="login__btn"
-          onClick={() => logInWithEmailAndPassword(email, password)}
-        >
-          Login
-        </button>
-        <button className="login__btn login__google" onClick={signInWithGoogle}>
-          Login with Google
-        </button>
-        <div>
-          <Link to="/reset">Forgot Password</Link>
-        </div>
-        <div>
-          Don't have an account? <Link to="/register">Register</Link> now.
-        </div>
-      </div>
-    </div>
+    <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
+      <Flex p={8} flex={1} align={"center"} justify={"center"}>
+        <Stack spacing={4} w={"full"} maxW={"md"}>
+          <Heading fontSize={"2xl"}>Sign in to your account</Heading>
+          <FormControl id="email">
+            <FormLabel>Email address</FormLabel>
+            <Input
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              type="email"
+            />
+          </FormControl>
+          <FormControl id="password">
+            <FormLabel>Password</FormLabel>
+            <Input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+            />
+          </FormControl>
+          <Stack spacing={6}>
+            <VStack
+              direction={{ base: "column", sm: "row" }}
+              align={"start"}
+              justify={"space-between"}
+            >
+              <Button
+                onClick={() => logInWithEmailAndPassword(email, password)}
+                bg={"blue.400"}
+                color={"white"}
+                width="100%"
+                _hover={{
+                  bg: "blue.500",
+                }}
+              >
+                Sign in
+              </Button>
+              <Button
+                onClick={signInWithGoogle}
+                colorScheme={"white"}
+                variant={"outline"}
+                color="blue.500"
+                leftIcon={<GoogleIcon />}
+                width="100%"
+              >
+                Sign In With Google
+              </Button>
+              <Flex
+                alignItems="center"
+                flexWrap="wrap"
+                flexDirection="column"
+                width="100%"
+              >
+                <Link color={"blue.500"}>
+                  <RouteLink to="/reset">Forgot password?</RouteLink>
+                </Link>
+                <Text>
+                  Don't have an account?{" "}
+                  <Link color={"blue.500"}>
+                    <RouteLink to="/register">Register</RouteLink> now.
+                  </Link>
+                </Text>
+              </Flex>
+            </VStack>
+          </Stack>
+        </Stack>
+      </Flex>
+    </Stack>
   );
 }
 
