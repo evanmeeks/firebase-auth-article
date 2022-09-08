@@ -35,7 +35,7 @@ function Login() {
   const navigate = useNavigate();
   //
   const uiConfig = {
-    signInFlow: "redirect",
+    signInFlow: "popup",
     signInSuccessUrl: "/git-auth",
     signInOptions: [firebase.auth.GithubAuthProvider.PROVIDER_ID],
     signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],

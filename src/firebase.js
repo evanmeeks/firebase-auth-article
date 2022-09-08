@@ -54,6 +54,7 @@ const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
+    console.log("google user", user);
     const q = query(collection(db, "users"), where("uid", "==", user.uid));
     const docs = await getDocs(q);
     if (docs.docs.length === 0) {
@@ -68,10 +69,12 @@ const signInWithGoogle = async () => {
     console.error(err);
   }
 };
+
 const signInWithGit = async () => {
   try {
     const res = await signInWithPopup(auth, gitProvider);
     const user = res.user;
+    console.log("git user", user);
     const q = query(collection(db, "users"), where("uid", "==", user.uid));
     const docs = await getDocs(q);
     if (docs.docs.length === 0) {
