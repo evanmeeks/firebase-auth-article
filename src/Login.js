@@ -33,7 +33,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
-
+  //
   const uiConfig = {
     signInFlow: "redirect",
     signInSuccessUrl: "/git-auth",
