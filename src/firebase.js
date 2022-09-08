@@ -1,13 +1,15 @@
 import { initializeApp } from "firebase/app";
 import {
-  GoogleAuthProvider,
   getAuth,
-  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
+  signInWithPopup,
 } from "firebase/auth";
+
 import {
   getFirestore,
   query,
@@ -16,28 +18,37 @@ import {
   where,
   addDoc,
 } from "firebase/firestore";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+
+import firebase from "firebase/compat/app";
+import * as firebaseui from "firebaseui";
+import "firebaseui/dist/firebaseui.css";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDK73LVTB7HZX4sjOl6nIlG_oMMGFAV8MI",
-  authDomain: "career-snap.firebaseapp.com",
-  databaseURL: "https://career-snap-default-rtdb.firebaseio.com",
-  projectId: "career-snap",
-  storageBucket: "career-snap.appspot.com",
-  messagingSenderId: "141088498250",
-  appId: "1:141088498250:web:967e6f6a5713d39be7bcb3",
-};
+// const firebaseConfig = {
+//   projectId: "career-snap",
+//   appId: "1:141088498250:web:afb15e497bab027ee7bcb3",
+//   databaseURL: "https://career-snap-default-rtdb.firebaseio.com",
+//   storageBucket: "career-snap.appspot.com",
+//   locationId: "us-central",
+//   apiKey: "AIzaSyDK73LVTB7HZX4sjOl6nIlG_oMMGFAV8MI",
+//   authDomain: "career-snap.firebaseapp.com",
+//   messagingSenderId: "141088498250",
+// };
 
-// Initialize Firebase
+const firebaseConfig = require("./firebase-config.json").result.sdkConfig;
 
-const app = initializeApp(firebaseConfig);
+// Instantiate a Firebase app.
+
+const app = firebase.initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
 const googleProvider = new GoogleAuthProvider();
+const gitProvider = new GithubAuthProvider();
 
 const signInWithGoogle = async () => {
   try {
@@ -58,7 +69,39 @@ const signInWithGoogle = async () => {
     alert(err.message);
   }
 };
-
+const signInWithGit = async () => {
+  try {
+    const res = await signInWithPopup(auth, gitProvider);
+    const user = res.user;
+    const q = query(collection(db, "users"), where("uid", "==", user.uid));
+    const docs = await getDocs(q);
+    if (docs.docs.length === 0) {
+      await addDoc(collection(db, "users"), {
+        uid: user.uid,
+        name: user.displayName,
+        authProvider: "git",
+        email: user.email,
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+const uiConfig = {
+  // Popup signin flow rather than redirect flow.
+  signInFlow: "popup",
+  // We will display Google and Facebook as auth providers.
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    firebase.auth.GithubAuthProvider.PROVIDER_ID,
+  ],
+  callbacks: {
+    // Avoid redirects after sign-in.
+    signInSuccessWithAuthResult: () => false,
+  },
+};
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
@@ -88,7 +131,14 @@ const sendPasswordReset = async (email) => {
     alert("Password reset link sent!");
   } catch (err) {
     console.error(err);
+    alert(err.message);
   }
+};
+
+const StyleButton = () => {
+  return (
+    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+  );
 };
 
 const logout = () => {
@@ -97,8 +147,10 @@ const logout = () => {
 
 export {
   app,
+  StyleButton,
   auth,
   db,
+  signInWithGit,
   signInWithGoogle,
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,

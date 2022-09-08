@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "result": {
+    "fileName": "google-config.js",
+    "fileContents": "// Copy and paste this into your JavaScript code to initialize the Firebase SDK.\n// You will also need to load the Firebase SDK.\n// See https://firebase.google.com/docs/web/setup for more details.\n\nfirebase.initializeApp({\n  \"projectId\": \"career-snap\",\n  \"appId\": \"1:141088498250:web:afb15e497bab027ee7bcb3\",\n  \"databaseURL\": \"https://career-snap-default-rtdb.firebaseio.com\",\n  \"storageBucket\": \"career-snap.appspot.com\",\n  \"apiKey\": \"AIzaSyDK73LVTB7HZX4sjOl6nIlG_oMMGFAV8MI\",\n  \"authDomain\": \"career-snap.firebaseapp.com\",\n  \"messagingSenderId\": \"141088498250\"\n});\n",
+    "sdkConfig": {
+      "projectId": "career-snap",
+      "appId": "1:141088498250:web:afb15e497bab027ee7bcb3",
+      "databaseURL": "https://career-snap-default-rtdb.firebaseio.com",
+      "storageBucket": "career-snap.appspot.com",
+      "locationId": "us-central",
+      "apiKey": "AIzaSyDK73LVTB7HZX4sjOl6nIlG_oMMGFAV8MI",
+      "authDomain": "career-snap.firebaseapp.com",
+      "messagingSenderId": "141088498250"
+    }
+  }
+}
