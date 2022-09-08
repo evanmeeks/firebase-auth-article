@@ -66,7 +66,6 @@ const signInWithGoogle = async () => {
     }
   } catch (err) {
     console.error(err);
-    alert(err.message);
   }
 };
 const signInWithGit = async () => {
@@ -85,23 +84,9 @@ const signInWithGit = async () => {
     }
   } catch (err) {
     console.error(err);
-    alert(err.message);
   }
 };
-const uiConfig = {
-  // Popup signin flow rather than redirect flow.
-  signInFlow: "popup",
-  // We will display Google and Facebook as auth providers.
-  signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    firebase.auth.GithubAuthProvider.PROVIDER_ID,
-  ],
-  callbacks: {
-    // Avoid redirects after sign-in.
-    signInSuccessWithAuthResult: () => false,
-  },
-};
+
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
@@ -131,14 +116,7 @@ const sendPasswordReset = async (email) => {
     alert("Password reset link sent!");
   } catch (err) {
     console.error(err);
-    alert(err.message);
   }
-};
-
-const StyleButton = () => {
-  return (
-    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-  );
 };
 
 const logout = () => {
@@ -147,7 +125,6 @@ const logout = () => {
 
 export {
   app,
-  StyleButton,
   auth,
   db,
   signInWithGit,

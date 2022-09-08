@@ -35,7 +35,7 @@ function Login() {
   const navigate = useNavigate();
 
   const uiConfig = {
-    signInFlow: "popup",
+    signInFlow: "redirect",
     signInSuccessUrl: "/git-auth",
     signInOptions: [firebase.auth.GithubAuthProvider.PROVIDER_ID],
     signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
@@ -122,7 +122,6 @@ function Login() {
               >
                 Sign in
               </Button>
-              <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
               <Button
                 onClick={signInWithGoogle}
                 colorScheme={"white"}
