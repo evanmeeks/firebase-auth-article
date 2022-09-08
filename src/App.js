@@ -7,7 +7,6 @@ import Reset from "./Reset";
 import Resume from "./pages/Resume";
 import Dashboard from "./Dashboard";
 import GitHubCredds from "./pages/GitCred";
-// import GitAuthorized from "./pages/GitAuthorized";
 
 function App() {
   React.useEffect(() => {}, []);
@@ -17,11 +16,6 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Login />} />
         <Route exact path="/resume" element={<Resume />} />
-        {/* <Route
-          exact
-          path="well-known/pki-validation/godaddy"
-          element={<godaddy />}
-        /> */}
         <Route exact path="/git-cred" element={<GitHubCredds />} />
         {/* <Route exact path="/git-cred-authorize" element={<GitAuthorized />} /> */}
         <Route exact path="/register" element={<Register />} />
