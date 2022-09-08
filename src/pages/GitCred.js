@@ -57,28 +57,6 @@ class GitHubCred extends React.Component {
         <div className={"styles.logo"}>
           <i className={"styles.logoIcon" + " material-icons"}>Authorized</i>
         </div>
-
-        {this.state.isSignedIn !== undefined && !this.state.isSignedIn && (
-          <div>
-            <StyledFirebaseAuth
-              className={"styles.firebaseUi"}
-              uiConfig={this.uiConfig}
-              firebaseAuth={firebaseApp.auth()}
-            />
-          </div>
-        )}
-        {this.state.isSignedIn && (
-          <div className={"styles.signedIn"}>
-            Hello {firebaseApp.auth().currentUser.displayName}. You are now
-            signed In!
-            <a
-              className={"styles.button"}
-              onClick={() => firebaseApp.auth().signOut()}
-            >
-              Sign-out
-            </a>
-          </div>
-        )}
       </div>
     );
   }
