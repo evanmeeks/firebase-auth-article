@@ -36,7 +36,7 @@ function Login() {
 
   const uiConfig = {
     signInFlow: "popup",
-    signInSuccessUrl: "/git-cred-authorize",
+    signInSuccessUrl: "/dashboard",
     signInOptions: [firebase.auth.GithubAuthProvider.PROVIDER_ID],
     signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
     callbacks: {
