@@ -28,20 +28,15 @@ import "firebaseui/dist/firebaseui.css";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// const firebaseConfig = {
-//   projectId: "career-snap",
-//   appId: "1:141088498250:web:afb15e497bab027ee7bcb3",
-//   databaseURL: "https://career-snap-default-rtdb.firebaseio.com",
-//   storageBucket: "career-snap.appspot.com",
-//   locationId: "us-central",
-//   apiKey: "AIzaSyDK73LVTB7HZX4sjOl6nIlG_oMMGFAV8MI",
-//   authDomain: "career-snap.firebaseapp.com",
-//   messagingSenderId: "141088498250",
-// };
-
-const firebaseConfig = require("./firebase-config.json").result.sdkConfig;
-
-// Instantiate a Firebase app.
+const firebaseConfig = {
+  apiKey: "AIzaSyDK73LVTB7HZX4sjOl6nIlG_oMMGFAV8MI",
+  authDomain: "career-snap.firebaseapp.com",
+  databaseURL: "https://career-snap-default-rtdb.firebaseio.com",
+  projectId: "career-snap",
+  storageBucket: "career-snap.appspot.com",
+  messagingSenderId: "141088498250",
+  appId: "1:141088498250:web:afb15e497bab027ee7bcb3",
+};
 
 const app = firebase.initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -127,9 +122,9 @@ const logout = () => {
 };
 
 export {
-  app,
-  auth,
   db,
+  auth,
+  app,
   signInWithGit,
   signInWithGoogle,
   logInWithEmailAndPassword,

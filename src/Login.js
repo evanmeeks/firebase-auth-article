@@ -11,6 +11,7 @@ import { GoogleIcon } from "./icons/GoogleIcon";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import { initializeApp } from "firebase/app";
 
 import {
   Button,
@@ -28,6 +29,23 @@ import {
   Image,
 } from "@chakra-ui/react";
 
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDK73LVTB7HZX4sjOl6nIlG_oMMGFAV8MI",
+  authDomain: "career-snap.firebaseapp.com",
+  databaseURL: "https://career-snap-default-rtdb.firebaseio.com",
+  projectId: "career-snap",
+  storageBucket: "career-snap.appspot.com",
+  messagingSenderId: "141088498250",
+  appId: "1:141088498250:web:afb15e497bab027ee7bcb3",
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,8 +55,10 @@ function Login() {
   const uiConfig = {
     signInFlow: "popup",
     signInSuccessUrl: "/git-auth",
-    signInOptions: [firebase.auth.GithubAuthProvider.PROVIDER_ID],
-    signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+    signInOptions: [
+      [firebase.auth.GithubAuthProvider.PROVIDER_ID],
+      [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+    ],
     callbacks: {
       signInSuccessWithAuthResult: () => false,
     },
@@ -132,6 +152,11 @@ function Login() {
               >
                 Sign In With Google
               </Button>
+              <StyledFirebaseAuth
+                uiConfig={uiConfig}
+                firebaseAuth={firebase.auth()}
+              />
+
               <Button
                 onClick={signInWithGit}
                 colorScheme={"white"}

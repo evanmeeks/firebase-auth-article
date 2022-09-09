@@ -50,6 +50,7 @@ function Register() {
           <Text fontStyle="italic" fontSize={"lg"} color={"gray.600"}>
             To get your caeer orgainzed in a snap 🫰
           </Text>
+          +
         </Stack>
         <Box
           rounded={"lg"}

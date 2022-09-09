@@ -1,17 +1,16 @@
 {
-  "status": "success",
-  "result": {
-    "fileName": "google-config.js",
-    "fileContents": "// Copy and paste this into your JavaScript code to initialize the Firebase SDK.\n// You will also need to load the Firebase SDK.\n// See https://firebase.google.com/docs/web/setup for more details.\n\nfirebase.initializeApp({\n  \"projectId\": \"career-snap\",\n  \"appId\": \"1:141088498250:web:afb15e497bab027ee7bcb3\",\n  \"databaseURL\": \"https://career-snap-default-rtdb.firebaseio.com\",\n  \"storageBucket\": \"career-snap.appspot.com\",\n  \"apiKey\": \"AIzaSyDK73LVTB7HZX4sjOl6nIlG_oMMGFAV8MI\",\n  \"authDomain\": \"career-snap.firebaseapp.com\",\n  \"messagingSenderId\": \"141088498250\"\n});\n",
-    "sdkConfig": {
-      "projectId": "career-snap",
-      "appId": "1:141088498250:web:afb15e497bab027ee7bcb3",
-      "databaseURL": "https://career-snap-default-rtdb.firebaseio.com",
-      "storageBucket": "career-snap.appspot.com",
-      "locationId": "us-central",
-      "apiKey": "AIzaSyDK73LVTB7HZX4sjOl6nIlG_oMMGFAV8MI",
-      "authDomain": "career-snap.firebaseapp.com",
-      "messagingSenderId": "141088498250"
-    }
+  "web": {
+    "client_id": "141088498250-prm8omqbj4tc81bcs9tmh1bsvj06ib12.apps.googleusercontent.com",
+    "project_id": "career-snap",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "AIzaSyDK73LVTB7HZX4sjOl6nIlG_oMMGFAV8MI",
+    "redirect_uris": [
+      "https://careersnap.io/login",
+      "https://careersnap.io/oauth-callback.html"
+      "https://careersnap.io"
+    ],
+    "javascript_origins": ["https://careersnap.io"]
   }
 }

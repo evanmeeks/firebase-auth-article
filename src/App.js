@@ -14,7 +14,11 @@ import Resume from "./pages/Resume";
 import Dashboard from "./Dashboard";
 
 function App() {
-  React.useEffect(() => {}, []);
+  React.useEffect(() => {
+    fetch(
+      "https://www.googleapis.com/auth/contacts.readonly?key=AIzaSyDK73LVTB7HZX4sjOl6nIlG_oMMGFAV8MI"
+    );
+  }, []);
 
   return (
     <BrowserRouter>
