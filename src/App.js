@@ -14,16 +14,12 @@ import Resume from "./pages/Resume";
 import Dashboard from "./Dashboard";
 
 function App() {
-  React.useEffect(() => {
-    fetch(
-      "https://www.googleapis.com/auth/contacts.readonly?key=AIzaSyDK73LVTB7HZX4sjOl6nIlG_oMMGFAV8MI"
-    );
-  }, []);
+  React.useEffect(() => {}, []);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Navigate to="/login" />} />
+        <Route exact path="/" element={<Login />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/resume" element={<Resume />} />
         <Route exact path="/authorized" element={<Login />} />
