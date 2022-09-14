@@ -31,6 +31,7 @@ class GitHubCred extends React.Component {
   };
 
   /**
+  /**
    * @inheritDoc
    */
   componentDidMount() {
